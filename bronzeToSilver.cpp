@@ -6,6 +6,11 @@
 
 using namespace std;
 
+/**
+ * Auto-generated code below aims at helping you parse
+ * the standard input according to the problem statement.
+ **/
+
 int main() {
     vector <vector<int>> checkPoints;
     bool boostUsed = false;
@@ -132,14 +137,11 @@ int main() {
 
         lastIterDist = nextCheckpointDist;
 
-        if (lapNumber == 3 && currentNext == checkPoints[checkPoints.size() - 2] &&
-            nextCheckpointAngle < 2) { // If boost not used and going to finish point.
+        if (lapNumber == 3 && currentNext == checkPoints[checkPoints.size() - 2] && nextCheckpointAngle < 2 && !boostUsed) { // If boost not used and going to finish point.
             boostUsed = true;
             cout << nextCheckpointX << " " << nextCheckpointY << " " << "BOOST" << " " << thrust << endl;
         }
-        if (((nextCheckpointDist > 6000 && !boostUsed && nextCheckpointAngle == 0) ||
-             (nextCheckpointDist > 4500 && nextCheckpointAngle < 2)) && allFound &&
-            bestXtoBoostFor == nextCheckpointX) {
+        if (nextCheckpointDist > 4500 && nextCheckpointAngle < 2 && allFound && bestXtoBoostFor == nextCheckpointX) { // if boost not available then it just thrusts at full speed.
             boostUsed = true;
             cout << nextCheckpointX << " " << nextCheckpointY << " " << "BOOST" << " " << thrust << endl;
         } else
