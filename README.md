@@ -10,19 +10,19 @@ Few hours after I started programming my pod I was already in the Bronze League.
 In this stage, I had to implement simple thrust control and if I remember correctly then I had also a one time BOOST to use.  I followed simple logic that if I got closer to the checkpoint I set thrust to a smaller value and also when the angle was too big I set the thrust to zero to correct the course. That took me into the Bronze League.
 
 ## Bronze to Silver
-### Intro
+### Intro     
 This is the stage where the real fun began. With my simple solution, I got something like 22000/23000 place in the scoreboard. I got extra information about opponents coordinates and also the shield was introduced, but I ended up not using either of them to reach silver. 
 
-### Thrust control
+### Thrust control     
 To reach silver I knew that my thrust control was definitely too primitive. I implemented a control system that increased the thrust when the angle was smaller and vice versa. Before the thrust was changing just between a couple of values, but now the thrust changes accordingly to the angle. 
 
-### Start turning before passing the checkpoint
-Addition to that I saw that my pod started to turn for next checkpoint after it passed current checkpoint so I thought that it would be awesome if it starts turning to next checkpoint a bit earlier. But how do I know where is the next checkpoint? Well, that's easy. For the first lap, I just assumed that the next checkpoint after the current objective is in the middle of the field and started to turn to this direction a bit before I passed the current objective and the second I got information about next checkpoint I turned for that. After the first lap, the bot had a record of every checkpoint in the field and therefore since lap 2, the pod knew every time where will the next checkpoint be after passing current objective and it started to turn to this direction a bit earlier.
+### Start turning before passing the checkpoint     
+Addition to that I saw that my pod started to turn for next checkpoint after it passed current checkpoint so I thought that it would be awesome if it starts turning to next checkpoint a bit earlier. But how do I know where is the next checkpoint? Well, that's easy. For the first lap, I just assumed that the next checkpoint after the current objective is in the middle of the field and started to turn to this direction a bit before I passed the current objective and the second I got information about next checkpoint I turned for that. After the first lap, the bot had a record of every checkpoint in the field and therefore since lap 2, the pod knew every time where will the next checkpoint be after passing current objective and it started to turn to this direction a bit earlier.    
 
-###Improved boost usage
+### Improved boost usage     
 Now when I had implemented the remembering where the checkpoints are I also thought to reimplement how the BOOST is used. I was able to calculate what is the longest distance between two checkpoints and therefore I set following rules to use the BOOST:
 If the lap number is 3 and BOOST is not used, then use it to boost for the finish.
 If the lap number is >1 and the pod is going to race between checkpoints with the longest distance then boost. That of course only when the distance is enough long and angle is good.   
 
-###Preventing pod to miss checkpoint because of inertia
+### Preventing pod to miss checkpoint because of inertia     
 With implementing lastly mentioned things, my pod got approximately 7000th place in the scoreboard. I examined why my pod had lost against some opponents and I saw that sometimes when the next checkpoint was close and the pod tried to turn for that with too much thrust, then it slid past the checkpoint very closely. So I added one more thrust control "if clause" that adjusted the trust to 30 if speed was larger than 180 and angle was bigger than 3. Then the pod corrected its course slightly and started speeding again when the angle was good enough. That adjustment took me to the first place in the scoreboard with ease and I got promoted to Silver League!
