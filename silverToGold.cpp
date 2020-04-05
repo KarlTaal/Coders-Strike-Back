@@ -122,7 +122,7 @@ int main() {
         if (nextCheckpointDist < 1600)
             thrust = 70;
 
-        if (nextCheckpointDist < 1500) { //TODO dont jump to next if previous was missed
+        if (nextCheckpointDist < 2000 && speed > 400) { //TODO dont jump to next if previous was missed
             nextCheckpointX = nextnextX;
             nextCheckpointY = nextnextY;
         }
