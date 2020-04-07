@@ -20,6 +20,8 @@ int main() {
     bool lapCountHelper = true;
     int lastIterDist = 0;
     int speed = 0;
+    int opponentSpeed = 0;
+    int opponentlastIterDist = 0;
     // game loop
     while (1) {
         double PI = 3.14159;
@@ -40,6 +42,13 @@ int main() {
         speed = lastIterDist - nextCheckpointDist;
         if (speed < 0)
             speed = speed * -1;
+
+        int distToOpponent = (int)sqrt((x-opponentX)*(x-opponentX) + (y-opponentY)*(y-opponentY));
+
+        int opponentNextCheckpointDist = sqrt((nextCheckpointX-opponentX)*(nextCheckpointX-opponentX) + (nextCheckpointY-opponentY)*(nextCheckpointY-opponentY));
+        opponentSpeed = opponentlastIterDist - opponentNextCheckpointDist;
+        if (opponentSpeed < 0)
+            opponentSpeed = opponentSpeed * -1;
 
 
 
@@ -109,6 +118,10 @@ int main() {
         cerr << "after that to: " << nextnextX << " " << nextnextY << endl;
         cerr << "bestXToBoost: " << bestXtoBoostFor << endl;
         cerr << "speed: " << speed << endl;
+        cerr << "opponent speed: " << opponentSpeed << endl;
+        cerr << "dist to opponent: " << distToOpponent << endl;
+        cerr << "opponent dist to check: " << opponentNextCheckpointDist << endl;
+        cerr << endl;
         cerr << "vector content: " << endl;
         for (vector<int> v : checkPoints){
             cerr << v[0] << ", " << v[1] << endl;
@@ -128,13 +141,24 @@ int main() {
         }
 
         if (nextCheckpointAngle > 3 && speed > 180)
-            thrust = 80;
+            thrust = 70;
 
         if (nextCheckpointAngle > 90)
             thrust = 0;
 
 
+        //attack opponent
+        //pretty awful if clause but for now seems to work, aims the situation where both pods are near to the checkpoint at full speed and by boosting my pod will knock opponent off the course
+        if (speed > 500 && opponentSpeed > 500 && !boostUsed && nextCheckpointDist < 2800 && distToOpponent < 1450 && opponentNextCheckpointDist > 1600 && opponentNextCheckpointDist < nextCheckpointDist){
+            boostUsed = true;
+            cout << opponentX << " " << opponentY << " " << "BOOST" <<  " " << thrust << endl;
+        }
+
+
+
+
         lastIterDist = nextCheckpointDist;
+        opponentlastIterDist = opponentNextCheckpointDist;
 
         if (lapNumber == 3 && currentNext == checkPoints[checkPoints.size()-2] && nextCheckpointAngle < 2 && !boostUsed){ // If boost not used and going to finish point.
             boostUsed = true;
