@@ -26,3 +26,18 @@ If the lap number is >1 and the pod is going to race between checkpoints with th
 
 ### Preventing pod to miss checkpoint because of inertia     
 With implementing lastly mentioned things, my pod got approximately 7000th place in the scoreboard. I examined why my pod had lost against some opponents and I saw that sometimes when the next checkpoint was close and the pod tried to turn for that with too much thrust, then it slid past the checkpoint very closely. So I added one more thrust control "if clause" that adjusted the trust to 30 if speed was larger than 180 and angle was bigger than 3. Then the pod corrected its course slightly and started speeding again when the angle was good enough. That adjustment took me to the first place in the scoreboard with ease and I got promoted to Silver League!
+
+## Silver to Gold
+### Intro     
+At this point I really did not have a good idea what to do next since I did not receive really any additional info about the game. I got only the SHIELD to use now for extra thing. Since I had ignored collisions so far I tought that I should implement some kind of functionality that deals with collisions.
+
+### Parameters
+Very first thing I did was actually adjusting some parameter values and that took me pretty good place in scoreboard. Just by changing some values...
+
+### Attack the opponent
+My idea was following: 
+Ingore the SHIELD opportunity and do not use it at all, because the info that my pod will deactive for 3 turns after that kind a scared me. Attack opponent with BOOST instead when suitable.   
+I implemented that functionality with one very long and and ugly if clause when to BOOST towards the enemy pod. I aimed the situtation where both our pods are thrusting to checkpoint at full speed. Now when the enemy pod is slightly ahead of me and I have BOOST to use then I BOOST towards the enemy pod hoping to knock it off the course and ideal scenario would be that I will pass the checkpoint but enemy's pod will be knocked away without going through the checkpoint. That worked like a charm! I got first place in leaderboard and got promoted to the Gold League!
+
+
+
