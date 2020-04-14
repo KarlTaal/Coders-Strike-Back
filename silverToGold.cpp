@@ -6,12 +6,8 @@
 
 using namespace std;
 
-/**
- * Auto-generated code below aims at helping you parse
- * the standard input according to the problem statement.
- **/
-
 int main() {
+    //Helper variables to keep track current situation.
     vector <vector<int>> checkPoints;
     bool boostUsed = false;
     bool allFound = false;
@@ -37,6 +33,8 @@ int main() {
         int opponentY;
         cin >> opponentX >> opponentY;
         cin.ignore();
+        
+        //Doing some changes to the input, so I can easily use it.
         if (nextCheckpointAngle < 0)
             nextCheckpointAngle = nextCheckpointAngle * -1;
         speed = lastIterDist - nextCheckpointDist;
@@ -51,12 +49,12 @@ int main() {
             opponentSpeed = opponentSpeed * -1;
 
 
-
         //default values incase we dont know nextnext checkpoint's coordinates.
         int nextnextX = 8000;
         int nextnextY = 4500;
+       
         vector<int> currentNext = {nextCheckpointX, nextCheckpointY};
-        if (!allFound) { //populate vectors
+        if (!allFound) { //if the pod is on lap 1 then populate vectors with the checkpoints
             if (checkPoints.size() == 0)
                 checkPoints.push_back(currentNext);
             else if (checkPoints[0] == currentNext && checkPoints.size() != 1){
@@ -73,7 +71,7 @@ int main() {
             }
         }
 
-        if (allFound && bestXtoBoostFor == -5) { //if we have not found longest to X then lets find it.
+        if (allFound && bestXtoBoostFor == -5) { //if we have not found longest to X yet but we know all the checkpoints then lets find it.
             double largest = 0;
             for (int j = 0; j < checkPoints.size() - 1; j++) {
                 int x1 = checkPoints[j][0];
@@ -98,7 +96,8 @@ int main() {
                 }
             }
         }
-
+        
+        //Keep track what number lap is it.
         if (checkPoints.size() > 1){
             if (currentNext == checkPoints[0] && lapCountHelper){
                 lapNumber++;
@@ -126,8 +125,8 @@ int main() {
         for (vector<int> v : checkPoints){
             cerr << v[0] << ", " << v[1] << endl;
         }
-
-
+        
+        //Choose thrust according to the angle.
         double anglePerc = 1 - (double)nextCheckpointAngle / 90.0;
         int thrust = 100;
         thrust = thrust * anglePerc;
@@ -154,12 +153,11 @@ int main() {
             cout << opponentX << " " << opponentY << " " << "BOOST" <<  " " << thrust << endl;
         }
 
-
-
-
+        //Saving current data for the next iteration.
         lastIterDist = nextCheckpointDist;
         opponentlastIterDist = opponentNextCheckpointDist;
 
+        //Giving the output.
         if (lapNumber == 3 && currentNext == checkPoints[checkPoints.size()-2] && nextCheckpointAngle < 2 && !boostUsed){ // If boost not used and going to finish point.
             boostUsed = true;
             cout << nextCheckpointX << " " << nextCheckpointY << " " << "BOOST" <<  " " << thrust << endl;
