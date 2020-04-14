@@ -2,9 +2,7 @@
 Test assignment from Milrem Robotics.
 ## Overview
 I really love competitions and I get easily addicted to them. So this test assignment is by far the coolest one I have done so far! I have done some coding in CodinGame before, but it was more like a glimpse to it. Therefore I knew already something about CodinGame before I started and got my pod moving very quickly because of that.
-In university, we have been coding mainly in Java and Python, but in this semester I took an elective course that introduces C++. As I saw that internship will be also in C++, then I chose that language also for programming my fearful racing bot. At first, I did not really care how my code looked like because at first, I did not have much information to work on with my bot and therefore the code was short. As I got more information about the game when I reached higher leagues, I added little by little more code without that my code getting incomprehensive. When I reached to Silver, then I decided to refactor the code to clear things up.
-As I reached higher leagues I started to read countless forum posts about coders strike back. I got new ideas from people and some intuition what will happen in higher leagues. For example, getting additional pod to control etc.
-
+In university, we have been coding mainly in Java and Python, but in this semester I took an elective course that introduces C++. As I saw that internship will be also in C++, then I chose that language also for programming my fearful racing bot. At first, I did not really care how my code looked like because at first, I did not have much information to work on with my bot and therefore the code was short. As I got more information about the game when I reached higher leagues, I added little by little more code without that my code getting incomprehensive. I did not create any classes and methods to generalize my code because before Gold League I did not really see the purpose to do so since I had only one pod to control and everything was straight forward. On the another hand if I had created a bot for the Gold League, then refactoring would have been mandatory. Sadly my time was consumed by school and I did not create a bot for the Gold League, altough the Gold League seemed to be very interesting challenge.   
 ## Wood to Bronze
 Few hours after I started programming my pod I was already in the Bronze League. I got there quick and thus of that, I did not capture middle states of my code and that is why the first code in the repository is about reaching to Silver League. 
 In this stage, I had to implement simple thrust control and if I remember correctly then I had also a one time BOOST to use.  I followed simple logic that if I got closer to the checkpoint I set thrust to a smaller value and also when the angle was too big I set the thrust to zero to correct the course. That took me into the Bronze League.
@@ -38,6 +36,16 @@ Very first thing I did was actually adjusting some parameter values and that too
 My idea was following: 
 Ingore the SHIELD opportunity and do not use it at all, because the info that my pod will deactive for 3 turns after that kind a scared me. Attack opponent with BOOST instead when suitable.   
 I implemented that functionality with one very long and and ugly if clause when to BOOST towards the enemy pod. I aimed the situtation where both our pods are thrusting to checkpoint at full speed. Now when the enemy pod is slightly ahead of me and I have BOOST to use then I BOOST towards the enemy pod hoping to knock it off the course and ideal scenario would be that I will pass the checkpoint but enemy's pod will be knocked away without going through the checkpoint. That worked like a charm! I got first place in leaderboard and got promoted to the Gold League!
+
+
+## Gold league and further
+Sadly because of the school assignments and midterm exams, I did not have time to deal with the Gold league. Altough I had very clear picture in my head what should I do in the Gold league. From this point the inputs changed trastically and I had much more knowledge about the behaviour of the race.    
+Like I did in previous leagues, I could have also implemented heuristic aproach here, but as I confirmed from the forums, then it was not the best solution for Gold League.   
+Probably one of the best ideas in Gold league would have been implementing genetic algorithm since it was possible to simulate the outcomes of next moves if the given input data would have been used properly. Since I have debugged one genetic algorithm in the course called "Software Testing" I know how the genetic algorithms work and I find this approach to be very interesting. Hopefully I can soon return to the CodinGame site and implement my awesome ideas.
+
+
+
+
 
 
 
